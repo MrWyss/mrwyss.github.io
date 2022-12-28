@@ -9,7 +9,7 @@ tags: [none]     # TAG names should always be lowercase
 
 **Hello world**,
 
-´´´powershell
+```powershell
 
 ## Eat an apple every day
 
@@ -22,4 +22,4 @@ Foreach ($Day in $Year) {
         Get-Help New-Doctor -Now
     }
 }
-´´´
+```
