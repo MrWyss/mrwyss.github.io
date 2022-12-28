@@ -12,8 +12,7 @@ An 🍎 a day keeps the 👩‍⚕️ away
 **Code**:
 
 ```powershell
-
-## Eat an apple every day
+# Eat an apple every day
 Foreach ($Day in $Year) {
     try {
         $apple = Get-Apple -full
@@ -23,4 +22,4 @@ Foreach ($Day in $Year) {
         Get-Help New-Doctor -Now
     }
 }
-´´´
+```
