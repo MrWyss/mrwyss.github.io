@@ -19,7 +19,7 @@ timezone: Europe/Zurich
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: MrWyss's Blog                          # the main title
+title: "MrWyss's Blog"                          # the main title
 
 tagline: Another IT Stuff blog   # it will display as the sub-title
 
