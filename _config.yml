@@ -19,7 +19,7 @@ timezone: Europe/Zurich
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: "MrWyss's Blog"                          # the main title
+title: MrWyss's Blog                          # the main title
 
 tagline: Another IT Stuff blog   # it will display as the sub-title
 
@@ -81,7 +81,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://pbs.twimg.com/profile_images/1422304134464741377/qusdUQxg.jpg
+avatar: '/assets/img/common/mrwyss.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
