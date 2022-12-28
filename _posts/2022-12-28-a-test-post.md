@@ -5,13 +5,13 @@ categories: [Test, First Post]
 tags: [randomstuff]     # TAG names should always be lowercase
 ---
 
-# An apple a day keeps the doctor away
+## this is just a test
 
 An 🍎 a day keeps the 👩‍⚕️ away
 
 **Code**:
 
-´´´powershell
+```powershell
 
 ## Eat an apple every day
 Foreach ($Day in $Year) {
