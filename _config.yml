@@ -24,7 +24,7 @@ title: ITtips.ch                          # the main title
 tagline: ITtips.ch - random tech blog   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  a radom tech blog, for it tips and small projects.
+  a tech blog about random projects, tips and tricks
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://mrwyss.github.io'
