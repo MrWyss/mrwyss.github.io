@@ -37,7 +37,7 @@ I does open subfolders (spawning explorer) in the users directory though. For ex
 | media/tada | C:\Windows\media\tada.wav | ❌
 | ccm/cmtrace | C:\Windows\ccm\cmtrace.exe | ✅
 | ccm/cmtrace.exe | C:\Windows\ccm\cmtrace.exe | ✅
-| testdir/../cmtrace.exe | C:\Windows\ccm\cmtrace.exe | ✅
+| testdir/../cmtrace.exe | C:\Windows\ccm\cmtrace.exe | ❌
 | testdir/../ | C:\Windows | ❌
 | testdir/..\ | C:\Windows | ✅ [^3]
 | \\../ | C:\ | ✅
