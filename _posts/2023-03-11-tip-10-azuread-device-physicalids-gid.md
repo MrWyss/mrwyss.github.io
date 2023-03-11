@@ -15,7 +15,7 @@ While working with Azure AD, Intune, Autopilot, Log analytics, etc., I’m sure 
 _Graph Explorer_
 ![Log analytics screenshot](/assets/img/tip-10/loganalytics.png){: height="40" }
 _Log analytics_
-It’s a decimal representation of this registry value: ``HKEY_USERS\.DEFAULT\Software\Microsoft\IdentityCRL\ExtendedProperties``, ``REG_SZ``, ``LID``.
+It’s a decimal representation of this registry value: ``HKEY_USERS\.DEFAULT\Software\Microsoft\IdentityCRL\ExtendedProperties``, ``REG_SZ``, ``LID``
 
 There you go! Now you know. As a bonus, here’s a PowerShell one-liner to read and convert it:
 
