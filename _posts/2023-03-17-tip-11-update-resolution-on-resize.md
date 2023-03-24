@@ -37,4 +37,4 @@ Enabling the **Update resolution on resize** feature gives you the flexibility t
 ![Update resolution on resize smaller](/assets/img/tip-11/UpdateResolutionOnResizeSmaller.png)
 _Update resolution on resize smaller_
 
-This might be a me problem. Maybe it helps someone.
+This might be a me problem. Maybe it helps someone. 🤷
