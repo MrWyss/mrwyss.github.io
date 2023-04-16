@@ -10,7 +10,7 @@ category:
 tags: batch gif
 mermaid: false
 ---
-Windows built-in **Snipping Tool** ships now with a video recorder. I have been waiting for this feature forever. The default file format is *MP4*. For this blog, my screen capture videos are converted to *Animated GIFs*. To convert these mp4's to gif's I this [great way](https://www.bannerbear.com/blog/how-to-make-a-gif-from-a-video-using-ffmpeg/).
+The **Snipping Tool** in Windows now includes a video recording feature, which I have been eagerly anticipating. The videos are saved in **MP4** format by default. For my blog, I convert these screen capture videos into **Animated GIFs** using this [great method](https://www.bannerbear.com/blog/how-to-make-a-gif-from-a-video-using-ffmpeg/) I discovered.
 
 ### Manual
 
@@ -25,11 +25,14 @@ REM Create the GIF using the palette
 ffmpeg -i "your.mp4" -i temp_palette.png -filter_complex "[0:v][1:v] paletteuse" "your.gif"
 ```
 
+> Converting videos to animated gif's works best with small videos with little color changes
+{: .prompt-info }
+
 ### Batch file
 
 While that approach works for single use, I wanted a more automated solution. I recalled that dropping a file onto a batch file would pass the file path as a parameter. My idea was to create a batch file that could accept dropped mp4 files and generate an animated gif using the above commands in the same directory.
 
-This is what I came up with: (Note: ffmpeg.exe must be in the same directory as the batch file).
+This is what I came up with:
 
 ```batch
 @echo off
@@ -52,6 +55,10 @@ REM Cleanup intermediate files
 del palette.png
 echo Completed.
 ```
+{: file="VideoToGIF.bat" }
+
+> ffmpeg.exe must be in the same directory as the batch file
+{: .prompt-info }
 
 ![Drag and drop mp4 to batch](/assets/img/tip-15/batchconvertogif.gif)_drag and drop mp4_
 
@@ -107,9 +114,10 @@ reg add "HKEY_CLASSES_ROOT\*\shell\Convert Video to GIF\command" /ve /d "\"C:\\P
 echo Installation complete.
 pause
 ```
+{: file="install.bat" }
 
-Find all files in this [VideoToGIF.zip](/assets/img/tip-15/VideoToGIF.zip)
+Find all the required files in this [VideoToGIF.zip](/assets/img/tip-15/VideoToGIF.zip)
 
-### Notes
-
-- Converting videos to animated gif's works best with small videos with little color changes
+- install.bat
+- VideoToGIF.bat
+- VideoToGIF.ico
