@@ -100,9 +100,9 @@ docker run -d --name funnel-whoami -p 8001:80 containous/whoami
 
 to start whoami. Check if it exposes whoami on <http://172.0.0.1:8001> on your device.
 
-### Funnel the docker image exposed port
+### Funnel/Serve the Docker Image
 
-Now, as we have it locally exposed, we would like to expose it to the scary Internet on yourhost.tailnet-name.ts.net/whoami. To do so we must tell Tailscale to serve it:
+Now, as we have it locally exposed, we would like to expose it to the scary Internet on **yourhost.tailnet-name.ts.net/whoami**. To do so we must tell Tailscale to serve it:
 
 ```bash
 sudo tailscale serve https /whoami http://127.0.0.1:8001 on
@@ -138,7 +138,7 @@ Serve a static html file on the scary internet is super simple.
 
 Create an example [index.html](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document) and save it locally e.g. ``/home/pi/tailscale-funnel/index.html``
 
-To serve it directly to yourhost.tailnet-name.ts.net run:
+To serve it directly to **yourhost.tailnet-name.ts.net** run:
 
 ```bash
 sudo tailscale serve https:443 / /home/pi/tailscale-funnel/index.html on
