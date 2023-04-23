@@ -13,14 +13,19 @@ mermaid: false
 
 ## Intro
 
-**Tailscale Funnel** is a secure and easy-to-use tool that allows you to share your resources with others over the internet without the need for complex setup or configuration. It acts as a reverse proxy, similar to **Cloudflare Tunnel**, and features **public DNS** and **TLS termination**. This makes it a great option for quick self-hosting resources. Some use cases include:
+**Tailscale Funnel** is a secure and easy-to-use tool that allows you to share your resources with others over the internet without the need for complex setup or configuration (no router port forwarding). It acts as a reverse proxy, similar to **Cloudflare Tunnel**, and features **public DNS** and **TLS termination**. This makes it a great option for quick self-hosting resources. Some use cases include:
 
 - Showcasing your development website to a co-worker, client or anyone on the internet
 - Exposing self-hosted docker images to the internet
 - Triggering webhooks on your dev device
+- Self-hosting a file or directory, see the idea I have at the end[^1]
 - etc.
 
-Here is a quick start, to activate **Tailscale Funnel** on a Raspberry Pi, serve a static html and a docker image on the Internet.
+I the next few steps, I will show you how to get started with **Tailscale Funnel**. I guess, the guide will work mostly on any Device (Linux, Windows or MacOS), but I have only tested it on a Raspberry Pi 400 with Raspberry Pi OS. The Tailscale client version was 1.38.4.
+
+## Prerequisites
+
+- [Tailscale](https://tailscale.com/) account (Free)
 
 ## Tailscale Admin Config
 
@@ -179,7 +184,9 @@ Once the prerequisites are installed and Tailscale is configured. It's as simple
 - Single file ``sudo tailscale serve https /notes.txt /home/pi/tailscale-funnel/notes.txt on``
 - SSH ``sudo tailscale serve tcp:2222 tcp://localhost:22 on`` this will only be on the tailnet not public
 
-> As of the time of this writing Tailscale Funnel is still beta
+> As of the time of this writing Tailscale Funnel is still beta.
 {: .prompt-warning }
 
-For my long-term self-hosting needs, I prefer using Cloudflare Tunnels. They can be set up with authentication and are managed on the backend. However, Tailscale Funnels can also be fun. For instance, I could create a self-hosted Pastebin by serving a file named ``pastebin.txt``. This file could be used to pipe any text into it, such as ``cowsay fun with funnels > pastebin.txt``
+For my long-term self-hosting needs, I prefer using Cloudflare Tunnels. They can be set up with authentication and are managed on the backend. However, Tailscale Funnels can also be fun.
+
+[^1]: For instance, I could create a self-hosted Pastebin by serving a file named ``pastebin.txt``. This file could be used to pipe any text into it, such as ``cowsay fun with funnels > pastebin.txt``
