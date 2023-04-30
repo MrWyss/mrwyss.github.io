@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Tip #17: my self-host docker setup with ssl certs'
-date: 2023-05-01 01:00 +0100
+date: 2023-05-01 01:00 +0010
 description: 
 image: 
 category:
