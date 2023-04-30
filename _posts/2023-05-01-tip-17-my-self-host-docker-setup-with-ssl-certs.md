@@ -21,7 +21,7 @@ I run a few docker images at home which are local only. Some examples:
 
 Each of these services has a **DNS name** and present an **SSL certificate**. I use [Traefik](https://traefik.io/) as a reverse proxy and [Let’s Encrypt](https://letsencrypt.org/) for the SSL certificates. I have set up a DNS challenge and an A record that points to my Docker server through [Cloudflare](https://www.cloudflare.com/).
 
-I have put together, in my optionion, a nice setup that is easy to maintain and that works well for me. Let me share that with you in this post.
+I have put together, in my opinion, a nice setup that is easy to maintain and that works well for me. Let me share that with you in this post.
 
 ## One-time setup
 
@@ -36,10 +36,10 @@ I created a subdomain for my public domain called **local**. I use this subdomai
 
 Assuming `192.168.1.2` is the docker server local IP address, the DNS records look like this:
 
-| Type | Name    | Content     | Proxy Status          |
-|------|---------|-------------|-----------------------|
-| A    | *.local | 192.168.1.2 | DNS only - reseved IP |
-| A    | *       | 192.168.1.2 | DNS only - reseved IP |
+| Type | Name    | Content     | Proxy Status           |
+|------|---------|-------------|------------------------|
+| A    | *.local | 192.168.1.2 | DNS only - reserved IP |
+| A    | *       | 192.168.1.2 | DNS only - reserved IP |
 
 This means that `local.yourdomain.com` or `anything.local.yourdomain.com` will point to `192.168.1.2`.
 
@@ -71,7 +71,7 @@ Like so:
 
 I use Traefik to redirect traffic to the right docker container and to manage SSL certificates.
 
-Traefix settings:
+Traefik settings:
 
 ```yaml
 version: "3.9"
@@ -166,7 +166,7 @@ docker-compose --env-file .env up
 ```
 {: .nolineno }
 
-Essentiall it will:
+Essentially it will:
 
 - expose the Traefik dashboard at `local.yourdomain.com/dashboard`, protected by basic auth (TRAEFIK_USER:TRAEFIK_PASSWORD)
 - redirect all http traffic to https
