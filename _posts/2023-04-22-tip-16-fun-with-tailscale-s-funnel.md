@@ -13,15 +13,15 @@ mermaid: false
 
 ## Intro
 
-**Tailscale Funnel** is a secure and easy-to-use tool that allows you to share your resources with others over the internet without the need for complex setup or configuration (no router port forwarding). It acts as a reverse proxy, similar to **Cloudflare Tunnel**, and features **public DNS** and **TLS termination**. This makes it a great option for quick self-hosting resources. Some use cases include:
+_**Tailscale Funnel** is a secure and easy-to-use tool that allows you to share your resources with others over the internet without the need for complex setup or configuration (no router port forwarding). It acts as a reverse proxy, similar to **Cloudflare Tunnel**, and features **public DNS** and **TLS termination**. This makes it a great option for quick self-hosting resources. Some use cases include:_
 
-- Showcasing your development website to a co-worker, client or anyone on the internet
-- Exposing self-hosted docker images to the internet
-- Triggering webhooks on your dev device
-- Self-hosting a file or directory, see the idea I have at the end[^1]
-- etc.
+- _Showcasing your development website to a co-worker, client or anyone on the internet_
+- _Exposing self-hosted docker images to the internet_
+- _Triggering webhooks on your dev device_
+- _Self-hosting a file or directory, see the idea I have at the end[^1]_
+- _etc._
 
-I the next few steps, I will show you how to get started with **Tailscale Funnel**. I guess, the guide will work mostly on any Device (Linux, Windows or MacOS), but I have only tested it on a Raspberry Pi 400 with Raspberry Pi OS. The Tailscale client version was 1.38.4.
+In the next few steps, I will show you how to get started with **Tailscale Funnel**. I guess, the guide will work mostly on any Device (Linux, Windows or macOS), but I have only tested it on a Raspberry Pi 400 with Raspberry Pi OS. The Tailscale client version was 1.38.4.
 
 ## Prerequisites
 
@@ -56,39 +56,44 @@ Tailscale can be installed with this one-liner:
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
+{: .nolineno }
 
-once installed, you have to start it and authenticate, to do so run:
+Start Tailscale:
 
 ```bash
 sudo tailscale up
 ```
+{: .nolineno }
 
-Authenticate
+Authenticate:
 
 ```bash
 To authenticate, visit:
 
         https://login.tailscale.com/a/XXXXXXXXXXXXX
 ```
+{:.nolineno }
 
 > follow the instructions in the browser
 {: .prompt-info }
 
 ## Turn Funnel On
 
-Turing on funnel for HTTPS is as simple as this:
+Turing on funnel for HTTPS:
 
 ```bash
 sudo tailscale funnel 443 on
 ```
+{: .nolineno }
 
-But we are not serving anything yet.
+But we are **not serving** anything yet.
 
-you can check this with:
+Check the status:
 
 ```bash
 sudo tailscale serve status
 ```
+{: .nolineno }
 
 ## Serve a Docker Image (whoami) on yourhost.tailnet-name.ts.net/whoami
 
@@ -97,27 +102,32 @@ Make sure you have docker installed. There are tons of [guides](https://sl.bing.
 
 ### Run Docker Image
 
-Simply run this command:
+Start `whoami` docker image:
 
 ```bash
 docker run -d --name funnel-whoami -p 8001:80 containous/whoami
 ```
+{: .nolineno }
 
-to start whoami. Check if it exposes whoami on <http://172.0.0.1:8001> on your device.
+Check if it exposes `whoami` on `http://172.0.0.1:8001` on your device.
 
 ### Funnel/Serve the Docker Image
 
-Now, as we have it locally exposed, we would like to expose it to the scary Internet on **yourhost.tailnet-name.ts.net/whoami**. To do so we must tell Tailscale to serve it:
+Now, as we have it locally exposed, we would like to expose it to the scary Internet on `yourhost.tailnet-name.ts.net/whoami`.
+
+Serve `http://127.0.0.1:8001` on `yourhost.tailnet-name.ts.net/whoami`:
 
 ```bash
 sudo tailscale serve https /whoami http://127.0.0.1:8001 on
 ```
+{: .nolineno }
 
-To check the funnel/serve status you can run:
+Check the funnel/serve status:
 
 ```bash
 sudo tailscale serve status
 ```
+{: .nolineno }
 
 Now you should see something like this:
 
@@ -128,14 +138,16 @@ Now you should see something like this:
 https://yourhost.tailnet-name.ts.net (Funnel on)
 |-- /whoami proxy http://127.0.0.1:8001
 ```
+{: .nolineno }
 
 Check the url + path in your browser (<https://yourhost.tailnet-name.ts.net/whoami>). It's not on publicly available and should even be TLS terminated.
 
-To stop it from serving run:
+Stop serving:
 
 ```bash
 sudo tailscale serve https /whoami http://127.0.0.1:8001 off
 ```
+{: .nolineno }
 
 ## Expose a static html site on yourhost.tailnet-name.ts.net
 
@@ -143,17 +155,19 @@ Serve a static html file on the scary internet is super simple.
 
 Create an example [index.html](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document) and save it locally e.g. ``/home/pi/tailscale-funnel/index.html``
 
-To serve it directly to **yourhost.tailnet-name.ts.net** run:
+Serve `index.html` on `yourhost.tailnet-name.ts.net/`:
 
 ```bash
 sudo tailscale serve https:443 / /home/pi/tailscale-funnel/index.html on
 ```
+{: .nolineno }
 
-To check the funnel/serve status you can run:
+Check the funnel/serve status:
 
 ```bash
 sudo tailscale serve status
 ```
+{: .nolineno }
 
 Now you should see something like this:
 
@@ -165,14 +179,16 @@ https://yourhost.tailnet-name.ts.net (Funnel on)
 |-- /       path  /home/pi/tailscale-funnel/index.html
 |-- /whoami proxy http://127.0.0.1:8001
 ```
+{: .nolineno }
 
 browse to (<https://yourhost.tailnet-name.ts.net>). It's now publicly available and should even be TLS terminated.
 
-To stop it from serving run:
+Stop serving:
 
 ```bash
 sudo tailscale serve https:443 / /home/pi/tailscale-funnel/index.html off
 ```
+{: .nolineno }
 
 ## Conclusion
 
