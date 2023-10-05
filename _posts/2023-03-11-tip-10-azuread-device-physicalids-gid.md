@@ -20,5 +20,5 @@ It’s a decimal representation of this registry value: ``HKEY_USERS\.DEFAULT\So
 There you go! Now you know. As a bonus, here’s a PowerShell one-liner to read and convert it:
 
 ```powershell
-New-PSDrive -Name HKU -PsProvider Registry HKEY_USERS | out-null; "g:{0}" -f [Int64]"0x$((Get-ItemProperty "HKU:\.DEFAULT\Software\Microsoft\IdentityCRL\ExtendedProperties").LID)"; Remove-PSDrive -Name HKU
+"g:{0}" -f [Int64]"0x$((Get-ItemProperty "Registry::HKEY_USERS\.DEFAULT\Software\Microsoft\IdentityCRL\ExtendedProperties").LID)"
 ```
